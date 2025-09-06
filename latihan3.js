@@ -132,15 +132,15 @@ for (let i = 1; i <= tinggi; i++) {
         row += " ";
     }
     for (let k = 1; k <= 2 * i - 1; k++) {
-        row += "*";
+        row += i;
     }
     console.log(row);
 }
-for (let i = 1; i <= 12; i++) {
-    let row = "*"
-    row += "*"
-    console.log(row)
-}
+// for (let i = 1; i <= 12; i++) {
+//     let row = "*"
+//     row += "*"
+//     console.log(row)
+// }
 for (let l = tinggi; l >= 1; l--) {
         let row = "";
     for (let m = 1; m <= tinggi - l; m++) {

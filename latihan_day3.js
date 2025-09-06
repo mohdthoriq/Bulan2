@@ -269,8 +269,8 @@ function hitungZakat(nominalHarta, nisab) {
         return "belum wajib zakat";
     }
 }
-console.log(hitungZakat(1000000, 85)); // 25000 // nisab nya 85 
-console.log(hitungZakat(750000, 85)); // belum wajib zakat
+console.log(hitungZakat(1000, 85)); // 25000 // nisab nya 85 
+console.log(hitungZakat(75, 85)); // belum wajib zakat
 
 // 17. validasi login santri
 function validasiLogin(username, password) {

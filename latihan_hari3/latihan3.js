@@ -12,7 +12,7 @@
 //     return 'halo ' + (nama ?? 'tamu');
 // }
 // console.log(sapa('budi'));
-
+// ...........
 
 
 // function mainanFavorit(mainan) {

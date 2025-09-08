@@ -22,36 +22,36 @@
 
 
 
-// let harga = 0;
-// let ulang = true;
-// function pesanMenu(pesanan) {
-//     do { 
-//         pesanan = prompt("Pilih angka menu yang ingin Anda pesan: \n1. Mie Ayam : Rp. 15.000\n2. Bakso : Rp. 10.000\n3. Seblak : Rp. 12.000\n4. Ikan Bakar : Rp. 18.000")
-//     switch (pesanan) {
-//         case "1":
-//             document.getElementById('tag1').innerHTML = "Mie Ayam : Rp. 15.000";
-//             harga += 15000;
-//             break;
-//         case "2":
-//             document.getElementById('tag2').innerHTML = "Bakso : Rp. 10.000";
-//             harga += 10000;
-//             break;
-//         case "3":
-//             document.getElementById('tag3').innerHTML = "Seblak : Rp. 12.000";
-//             harga  += 12000;
-//             break;
-//         case "4":
-//             document.getElementById('tag4').innerHTML = "Ikan Bakar : Rp. 18.000";
-//             harga += 18000;
-//             break;
-//         default:
-//             document.getElementById('tag5').innerHTML = "Anda tidak memesan apa-apa";
-//     }
-//     ulang = confirm("Apakah anda ingin memesan lagi?");
-//     } while (ulang);
-//     document.getElementById('tag6').innerHTML = "Total Harga : Rp. " + harga;
-//     return harga;
-// }
+let harga = 0;
+let ulang = true;
+function pesanMenu() {
+    do { 
+        let pesanan = prompt("Pilih angka menu yang ingin Anda pesan: \n1. Mie Ayam : Rp. 15.000\n2. Bakso : Rp. 10.000\n3. Seblak : Rp. 12.000\n4. Ikan Bakar : Rp. 18.000")
+    switch (pesanan) {
+        case "1":
+            document.getElementById('tag1').innerHTML = "Mie Ayam : Rp. 15.000";
+            harga += 15000;
+            break;
+        case "2":
+            document.getElementById('tag2').innerHTML = "Bakso : Rp. 10.000";
+            harga += 10000;
+            break;
+        case "3":
+            document.getElementById('tag3').innerHTML = "Seblak : Rp. 12.000";
+            harga  += 12000;
+            break;
+        case "4":
+            document.getElementById('tag4').innerHTML = "Ikan Bakar : Rp. 18.000";
+            harga += 18000;
+            break;
+        default:
+            document.getElementById('tag5').innerHTML = "Anda tidak memesan apa-apa";
+    }
+    ulang = confirm("Apakah anda ingin memesan lagi?");
+    } while (ulang);
+    document.getElementById('tag6').innerHTML = "Total Harga : Rp. " + harga;
+    return harga;
+}
 
 let dataSantri = [
     "bambang",

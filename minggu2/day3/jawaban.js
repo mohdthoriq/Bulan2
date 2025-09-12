@@ -110,67 +110,62 @@ let sistemPerpustakaan = {
     cariBuku: function (judul) {
         let Buku = perpustakaan.KoleksiBukuBaru.find((buku) => buku.judul === judul);
         if (Buku) {
-                console.log(`Judul buku : ${Buku.judul}, pengarang : ${Buku.pengarang}`);
-            } else {
-                return 'Buku tidak ditemukan';
-            }
+            console.log(`Judul buku : "${Buku.judul}" - ${Buku.pengarang}`);
+        } else {
+            return 'Buku tidak ditemukan';
+        }
 
     },
     hitungTotalBuku: function () {
         console.log(perpustakaan.jumlahbuku);
     },
     tampilkanInfo: function () {
-        // console.log(perpustakaan);
+        console.log("=========================================")
+        console.log("     INFORMASI PERPUSTAKAAN DIGITAL");
+        console.log("========================================");
+        console.log('\n');
+        console.log(`Nama Perpustakaan: ${perpustakaanDigitalKota.nama}`);
+        console.log(`Alamat: ${perpustakaanDigitalKota.alamat}`);
+        console.log(`Total Koleksi Buku: ${perpustakaanDigitalKota.jumlahbuku} buku`);
+        console.log('\n');
+        console.log("========================================");
+        console.log(`         FASILITAS TERSEDIA`);
+        console.log("========================================");
+        console.log('\n');
+        console.log('🪑 Ruang Baca');
+        console.log(`     ⚫ Kapasitas:${perpustakaan.fasilitasPerpustakaan.ruangBaca.kapasitas}`);
+        console.log(`     ⚫ Lokasi:${perpustakaan.fasilitasPerpustakaan.ruangBaca.lantai}`);
+        console.log('\n');
+        console.log('💻 Ruang Komputer');
+        console.log(`     ⚫ Kapasitas:${perpustakaan.fasilitasPerpustakaan.ruangKomputer.kapasitas}`);
+        console.log(`     ⚫ Lokasi:${perpustakaan.fasilitasPerpustakaan.ruangKomputer.lantai}`);
+        console.log('\n');
+        console.log('===========================================');
+        console.log('         KOLEKSI BUKU TERBARU');
+        console.log('============================================');
+        console.log('\n');
+        sistemPerpustakaan.tambahBuku("Laskar Pelangi", "Andrea Hirata");
+        sistemPerpustakaan.tambahBuku("Bumi Manusia", "Pramoedya Ananta Toer");
+        sistemPerpustakaan.cariBuku("Laskar Pelangi");
+        sistemPerpustakaan.cariBuku("Bumi Manusia")
+        console.log('\n');
+        console.log("===========================================");
+        console.log('         PENGUNJUNG HARI INI');
+        console.log('===========================================');
+        console.log('\n');
+
+        for (let i = 0; i < daftarPengunjung.length; i++) {
+            console.log(`• ${daftarPengunjung[i]}`);
+        }
+        console.log('\n');
+        console.log("===========================================");
+        console.log("Status Sistem: ✅ Online");
+        console.log("Terakhir diupdate: 11 September 2025");
+        console.log("===========================================")
+
+
     }
 }
 
-// console.log(sistemPerpustakaan.tambahBuku);
-
-
-sistemPerpustakaan.tambahBuku("Laskar Pelangi", "Andrea Hirata");
-sistemPerpustakaan.tambahBuku("Bumi Manusia", "Pramoedya Ananta Toer");
-
-
 // console.log(sistemPerpustakaan.hitungTotalBuku());
 sistemPerpustakaan.tampilkanInfo();
-console.log("=========================================")
-console.log("     INFORMASI PERPUSTAKAAN DIGITAL");
-console.log("========================================");
-console.log('\n');
-console.log(`Nama Perpustakaan: ${perpustakaanDigitalKota.nama}`);
-console.log(`Alamat: ${perpustakaanDigitalKota.alamat}`);
-console.log(`Total Koleksi Buku: ${perpustakaanDigitalKota.jumlahbuku} buku`);
-console.log('\n');
-console.log("========================================");
-console.log(`         FASILITAS TERSEDIA`);
-console.log("========================================");
-console.log('\n');
-console.log('🪑 Ruang Baca');
-console.log(`     ⚫ Kapasitas:${perpustakaan.fasilitasPerpustakaan.ruangBaca.kapasitas}`);
-console.log(`     ⚫ Lokasi:${perpustakaan.fasilitasPerpustakaan.ruangBaca.lantai}`);
-console.log('\n');
-console.log('💻 Ruang Komputer');
-console.log(`     ⚫ Kapasitas:${perpustakaan.fasilitasPerpustakaan.ruangKomputer.kapasitas}`);
-console.log(`     ⚫ Lokasi:${perpustakaan.fasilitasPerpustakaan.ruangKomputer.lantai}`);
-console.log('\n');
-console.log('===========================================');
-console.log('         KOLEKSI BUKU TERBARU');
-console.log('============================================');
-console.log('\n');
-sistemPerpustakaan.cariBuku("Laskar Pelangi");
-sistemPerpustakaan.cariBuku("Bumi Manusia")
-console.log('\n');
-console.log("===========================================");
-console.log('         PENGUNJUNG HARI INI');
-console.log('===========================================');
-console.log('\n');
-
-for (let i = 0; i < daftarPengunjung.length; i++) {
-    console.log(`• ${daftarPengunjung[i]}`);
-}
-console.log('\n');
-console.log("===========================================");
-console.log("Status Sistem: ✅ Online");
-console.log("Terakhir diupdate: 11 September 2025");
-console.log("===========================================")
-

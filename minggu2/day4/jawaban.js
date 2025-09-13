@@ -50,6 +50,8 @@ const menuMakanan = {
                 hapusBanyak.push(nama);
             }
         });
+        console.log(`✅ Berhasil hapus: ${dihapus.join(', ')}`);
+        return [...dihapus];  // SPREAD: return copy array
     },
     salinMenu: function (...pilihId) {
         if (pilihId.length === 0) { // jika tidak ada argumen maka balikkan seluruh data 

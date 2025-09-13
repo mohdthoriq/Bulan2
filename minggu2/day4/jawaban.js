@@ -41,12 +41,13 @@ const menuMakanan = {
 
     },
     hapusBanyak: function (...ids) {// pake rest untuk menampung banyak id
+        const hapusBanyak = [];
         ids.forEach(id => { // iterasi id 
             const index = this.data.findIndex(item => item.id === id);// mencari index yang cocok sesuai dengan yang ada di ids[]
             if (index !== -1) {// jika index id tidak ditemukan maka
                 const { nama } = this.data[index];
                 this.data.splice(index, 1); // hapus id tersebut
-                console.log(`✅ "${nama}" dihapus!`); // tampilan pesan konfirmasi
+                hapusBanyak.push(nama);
             }
         });
     },

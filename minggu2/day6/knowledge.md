@@ -1,0 +1,3 @@
+***tugas 1***
+pemograman hmm...
+pemograman adalah membuat sebuah sistem yang dynamis, semakin logik kita berpikir maka akan semakin bagus sebuah pemograman.HTML dan CSS itu hanya tampilah luar saja, tapi javescript lah yang membuat kita bisa berinteraksi dengan bahasa komputer kita. karena javascript adalah bahasa komputer yang paling dekat dengan manusia.

@@ -1,0 +1,1 @@
+export { catatAbsensi as Absen } from '../absensi/index.js';

@@ -138,20 +138,20 @@
 
 
 // 10.
-// const apikey = fetch("https://equran.id/api/v2/surat/1")//Memanggil API untuk mengambil data surat 1. fetch mengembalikan Promise.
-//     .then(response => {//Menangani response dari fetch
-//         if (!response.ok) throw new Error("API gagal diambil")//Jika HTTP status bukan 200–299, lempar error supaya Promise rejected.
-//         return response.json() // mengembalikan respon jadi json
-//     })
-// const time = new Promise((_,reject) => { //Membuat Promise baru yang hanya reject setelah delay tertentu. _ berarti kita tidak menggunakan resolve.
-//     setTimeout(() => { //Setelah 2 detik, Promise ini akan rejected dengan pesan error “timeout api terlalu lama”.
-//         reject(new Error("timeout api terlalu lama"));
-//     }, 5000) // 
-// })
+const apikey = fetch("https://equran.id/api/v2/surat/1")//Memanggil API untuk mengambil data surat 1. fetch mengembalikan Promise.
+    .then(response => {//Menangani response dari fetch
+        if (!response.ok) throw new Error("API gagal diambil")//Jika HTTP status bukan 200–299, lempar error supaya Promise rejected.
+        return response.json() // mengembalikan respon jadi json
+    })
+const time = new Promise((_,reject) => { //Membuat Promise baru yang hanya reject setelah delay tertentu. _ berarti kita tidak menggunakan resolve.
+    setTimeout(() => { //Setelah 2 detik, Promise ini akan rejected dengan pesan error “timeout api terlalu lama”.
+        reject(new Error("timeout api terlalu lama"));
+    }, 5000) // 
+})
 
-// Promise.race([apikey, time]) // melombakan time dan apikey
-//     .then(data => {
-//        console.log(JSON.stringify(data, null, 2));
-//          }) // format rapi   
-//     .catch(error => console.log(error.message))
-//     .finally(() => console.log("proses selesai"));
+Promise.race([apikey, time]) // melombakan time dan apikey
+    .then(data => {
+       console.log(JSON.stringify(data, null, 2));
+         }) // format rapi   
+    .catch(error => console.log(error.message))
+    .finally(() => console.log("proses selesai"));

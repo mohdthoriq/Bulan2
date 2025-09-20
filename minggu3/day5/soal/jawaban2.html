@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jawabana soal 11 - 20</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            gap: 20px;;
+        }
+        #soal17 .img {
+            width: 100px;
+            height: 100px;
+        }
+        #soal19 {
+            font-size: 30px;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- soal 11 -->
+    <div id="soal11">
+        <p class="warna"></p>
+        <p class="warna"></p>
+        <p class="warna"></p>
+    </div>
+    <!-- soal 12 -->
+    <div id="box"></div>
+    <!-- soal 13 -->
+    <div id="soal13">
+        <a id="link">Klik aku</a>
+    </div>
+    <!-- soal 14 -->
+    <div id="soal14">
+        <p class="p14">paragraf a</p>
+        <p class="p14">paragraf b</p>
+        <p class="p14">paragraf c</p>
+    </div>
+    <!-- soal 15 -->
+     <div id="soal15">
+        <p>Judul Lama</p>
+     </div>
+    <!-- soal 16 -->
+     <div id="soal16">
+        <ul>
+            <li class="item">tes</li>
+            <li class="item">tes</li>
+            <li class="item">tes</li>
+            <li class="item">tes</li>
+            <li class="item">tes</li>
+        </ul>
+     </div>
+    <!-- soal 17 -->
+     <div id="soal17">
+        <img class = "img" src="foto1.jpg" alt="contoh">
+        <img class = "img" src="foto2.jpg" alt="contoh">
+        <img class = "img" src="foto3.jpg" alt="contoh">
+     </div>
+    <!-- soal 18 -->
+     <div id="soal18">
+        <p>Hello</p>
+     </div>
+    <!-- soal 19 -->
+     <div id="soal19">
+        <p></p>
+     </div>
+    <!-- soal 20 -->
+     <div id="soal20">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+     </div>
+<script>
+    // soal 11
+    const soal11 = document.getElementById("soal11")
+    let p = document.querySelectorAll(".warna")
+    p.forEach((p, i) => {
+        const warna = ["red", "blue", "green"]
+        p.innerText = `Paragraf ke-${i+1}`
+        p.style.color = warna[i % warna.length]
+        })
+    // soal 12
+    const box = document.getElementById("box")
+    box.style.width = "200px"
+    box.style.height = "200px"
+    box.style.backgroundColor = "yellow"
+    // soal 13
+    const link = document.getElementById("link")
+    link.setAttribute("href", "https://www.google.com")
+    link.setAttribute("target", "_blank")
+    // soal 14
+    const p14 = document.querySelectorAll(".p14")
+    p14.forEach(p => {
+        p.innerText = p.innerText.toUpperCase()
+    })
+    // soal 15
+    const soal15 = document.getElementById("soal15")
+    const p15 = document.querySelector("p")
+    p15.classList.add("highlight")
+    // soal 16
+    const soal16 = document.getElementById("soal16")
+    const item = soal16.querySelectorAll(".item")
+    item.forEach((p, i) => {
+            if (i % 2 == 0) {
+                p.style.color = "red"
+            } else {
+                p.style.color = "blue"
+            }
+    })
+    // soal 17
+    const soal17 = document.getElementById("soal17")
+    const img = soal17.querySelectorAll(".img")
+    img.forEach(p=> {
+        p.setAttribute("src", "placeholder.jpg")
+    })
+    // soal 18
+    const soal18 = document.getElementById("soal18")
+    soal18.style.backgroundColor = "black"
+    soal18.style.color = "white"
+    soal18.style.fontSize = "30px"
+    soal18.style.textAlign = "center"
+    soal18.style.padding = "20px"
+    // soal 19
+    const soal19 = document.getElementById("soal19")
+    async function getSurat() {
+        let hasil = await fetch("https://equran.id/api/v2/surat/1")
+        let data = await hasil.json()
+        soal19.innerText = data.data.namaLatin
+    }
+    getSurat()
+    // soal 20
+    const soal20 = document.getElementById("soal20")
+    const li = soal20.querySelectorAll("li")
+    async function Surat() {
+        let hasil = await fetch("https://equran.id/api/v2/surat")
+        let data = await hasil.json()
+        li.forEach((p, i) => {
+            if (data.data[i]) {
+                p.innerText = data.data[i].namaLatin
+            }
+        })
+        
+    }
+    Surat()
+</script>
+</body>
+</html>

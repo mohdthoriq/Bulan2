@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minggu 5 - DOM</title>
+</head>
+<body>
+    
+    <!-- tugas 1 -->
+    <h1 id = "p1"></h1>
+    <!-- tugas2 -->
+     <p class="paragraf"></p>
+     <p class="paragraf"></p>
+     <p class="paragraf"></p>
+    <!-- tugas3 -->
+     <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+     </ul>
+     <!-- tugas4 -->
+      <img src="" id = "foto">
+    <!-- tugas5 -->
+     <p class="teks"></p>
+     <p class="teks"></p>
+     <p class="teks"></p>
+     <p class="teks"></p>
+    <!-- tugas6 -->
+     <p id="sol6">Awal</p>
+    <!-- tugas7 -->
+     <p id="sol7">Belajar DOM</p>
+    <!-- tugas8 -->
+     <div id = "div"></div>
+    <!-- tugas9 & 10-->
+     <p class = "sol9">Tampilkan saya</p>
+
+<script>
+    // tugas1
+    document.getElementById("p1").innerText = "Halo DOM!!"
+    // tugas2
+    const sol2 = document.getElementsByClassName("paragraf")
+   for (let i = 0; i < sol2.length; i++) {
+    sol2[i].innerHTML = `Paragraf ke-${i+1}`
+    sol2[i].style.color = "blue"
+   }
+   // tugas3
+   const sol3 = document.getElementsByTagName("li")
+   for (let i = 0; i < sol3.length; i++) {
+    sol3[i].innerText += "- item" 
+   }
+   // tugas4
+   const sol4 = document.querySelector("#foto").src = "unnamed.jpg"
+   // tugas5
+   const sol5 = document.querySelectorAll(".teks")
+   sol5.forEach((p, i) => {
+    p.innerText = `Teks ke-${i+1}`
+    p.style.color = "blue"
+   })
+   // tugas6
+   const sol6 = document.getElementById("sol6")
+   sol6.innerText = "Akhir"
+   // tugas7
+   const sol7 = document.getElementById("sol7")
+   sol7.innerHTML = "<strong>Belajar DOM</strong>"
+   // tugas8
+   const div = document.getElementById("div")
+   div.innerText = "Isi Baru dari JS"
+   // tugas9
+   const sol9 = document.getElementsByClassName("sol9")
+   sol9.style.display = "none"
+   // tugas10
+   sol9.style.display = "block"
+</script>
+</body>
+</html>

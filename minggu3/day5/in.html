@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #hello {
+            color: rgb(255, 255, 255);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p class="hello" name="hello">Hello world</p>
+        <p class="hello" name="hello">Hello PIT</p>
+        <p class="hello" name="hello">Hello RIT</p>
+        <img id="gambar" src="test.webp">
+    </div>
+    <script>
+        // const judul = document.getElementById("hello")
+        // const gambar = document.getElementById("gambar")
+        const judul = document.querySelectorAll(".hello")
+        const gambar = document.querySelector("#gambar")
+
+        judul.forEach((p, i) =>{
+            console.log(`Paragraf ke-${i+1}: ${p.innerHTML}`)
+            p.innerText = "hello santri"
+            // p.innerHTML = "<strong> Hello Html <strong>"
+            p.style.color = "red"
+            p.style.fontSize = "100px"
+            p.style.display = "block"
+        })
+
+        gambar.src = ""
+    </script>
+</body>
+</html>

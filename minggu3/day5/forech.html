@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .hello {
+      font-size: 30px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p class="hello">Hello world</p>
+    <p class="hello">Hello PIT</p>
+    <p class="hello">Hello RIT</p>
+    <p class="hello">Hello MIT</p>
+    <p class="hello">Hello huauau</p>
+  </div>
+
+  <script>
+    const judul = document.querySelectorAll(".hello")
+
+    // daftar warna
+    const warna = ["red", "blue", "green", "orange", "purple"]
+
+    judul.forEach((p, i) => {
+      p.style.color = warna[i % warna.length] // biar muter kalau banyak
+      // p.innerText = `Paragraf ke-${i+1}`
+    })
+  </script>
+</body>
+</html>

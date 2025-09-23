@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study case event day 1 week 4 month 2</title>
+</head>
+<body>
+    
+    <!-- 1 -->
+     <button onclick="btn1()">click me</button>
+    <!-- 2 -->
+     <img src="foto-1.jpg" onclick="this.src='foto-2.jpg'" alt="soal2" style="width: 200px;">
+    <!-- 3 -->
+     <p ondblclick="this.innerText='soal nomor 3'">coba klik 2x disini!</p>
+    <!-- 4 -->
+    <input type="text" onfocus="this.placeholder='Tulis disini..'">
+    <!-- 5 -->
+     <button
+      onmousedown="alert('Mouse down')", 
+      onmouseup="alert('Mouse up')">
+        soal no 5
+     </button>
+    <!-- 6 -->
+     <button id="btn">soal 6</button>
+     <p id="msg">soal 6</p>
+    <!-- 7 -->
+     <div id="area">tes</div>
+    <!-- 8 -->
+     <input type="text" id="input">
+     <span id="show"></span>
+    <!-- 9 -->
+     <button id="tombol">soal 9</button>
+    <!-- 10 -->
+     <button id="soal10">soal 10</button>
+    <!-- 11 -->
+     <button id="soal11">pencet soal 11</button>
+    <!-- 12 -->
+     <button id="soal12">REMOVE</button>
+    <!-- 13 -->
+     <form id="myform">
+        <label>
+            <input type="text" id="nama">
+        </label>
+        <button type="submit">submit</button>
+     </form>
+    <!-- 14 -->
+     <ul id="daftar">
+        <li>apel</li>
+        <li>pisang</li>
+        <li>durian</li>
+        <li>rambutan</li>
+        <li>manggis</li>
+     </ul>
+    <!-- 15 -->
+     <button id="soal15">klik disini untuk soal 15</button>
+    <script>
+        // 1
+        function btn1() {
+            alert("Halo!")
+        }
+        // 6
+         let btn = document.getElementById('btn')
+        btn.onclick = function() {
+            document.getElementById('msg').innerHTML = "perubahan"
+        }
+        // 7
+        const area = document.getElementById('area')
+        area.style.width = "200px"
+        area.style.height = "200px"
+        area.onmouseover = function() {
+            area.style.backgroundColor = "red"
+        }
+        area.onmouseout = function() {
+            area.style.backgroundColor = "white"
+        }
+        // 8
+        const input = document.getElementById('input')
+        const show = document.getElementById('show')
+        input.oninput = function () {
+            let isi = input.value 
+            show.innerHTML = `${isi}`
+        }
+        //  9
+        const tombol = document.getElementById('tombol')
+        tombol.onclick = function() {
+            tombol.disabled = true
+        }
+        // 10
+        const soal10 = document.getElementById('soal10')
+        soal10.onclick = function() {
+            alert('handler pertama')
+        }
+           // menimpa handler pertama
+        soal10.onclick = function() { 
+            alert('handler kedua')
+        }
+        // 11
+        const soal11 = document.getElementById('soal11')
+         function handler1() {
+            console.log('handler A')
+        }
+         function handler2() {
+            soal11.style.backgroundColor = "red"
+        }
+        soal11.addEventListener("click", handler1)
+        soal11.addEventListener("click", handler2)
+
+        // 12
+        const soal12 = document.getElementById('soal12')
+        soal12.addEventListener("click", function() {
+            soal11.removeEventListener("click", handler1)
+            console.log("menghapus handler 1");
+        })
+        // 13
+        const form = document.getElementById('myform')
+        form.addEventListener("submit", function(e) {
+            e.preventDefault()
+            let hasilInput = document.getElementById('nama').value
+            console.log(hasilInput);
+            
+        })
+        // 14
+        const daftar = document.getElementById('daftar')
+        daftar.addEventListener("click", function(e){
+            if (e.target.tagName === "LI")
+            e.target.textContent = "sudah diklik"
+        })
+        // 15
+        const soal15 = document.getElementById('soal15')
+        soal15.addEventListener("click", function() {
+            console.log("cuma bisa sekali lho");
+            
+        }, {once : true})
+    </script>
+</body>
+</html>

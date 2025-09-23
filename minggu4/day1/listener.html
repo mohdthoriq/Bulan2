@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="myButton">Click me</button>
+
+    <script>
+        const button = document.getElementById('myButton');
+        button.addEventListener('mouseover', function() {
+            alert('You hovered over the button!');
+        });
+    </script>
+    <div>
+        <p id="myP">This is a paragraph.</p>
+    </div>
+    <button id="myBtn" onclick="remove()">Try it</button>
+
+<script>
+let x = document.getElementById("myBtn");
+let y = document.getElementById("myP");
+// x.addEventListener("click", myFunction);
+// x.addEventListener("mouseover", someOtherFunction);
+// x.addEventListener("mouseout", mouseout);
+x.addEventListener("mouseover", mouse)
+
+function mouse() {
+    y.innerHTML = Math.random()
+}
+function remove() {
+    x.removeEventListener("mouseover", mouse);
+}
+
+// function myFunction() {
+//   alert ("Hello World!");
+// }
+
+// function someOtherFunction(s) {
+// 	// s.target.innerText = "click me"
+//     // s.target.style.backgroundColor = "red"
+//     x.innerHTML = Math.random()
+// }
+
+// function remove() {
+//     x.removeEventListener("click", someOtherFunction);
+// }
+
+
+// function mouseout(s) {
+// 	s.target.innerText = "Try it"
+// }
+</script>
+</body>
+</html>

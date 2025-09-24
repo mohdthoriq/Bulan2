@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 6 -->
+     <input type="text" placeholder="soal 6" required><br>
+    <!-- 7 -->
+     <input type="number" min="18" max="60" placeholder="soal 7"><br>
+    <!-- 8 -->
+     <form id="login">
+        <input type="text" placeholder="soal 8" required>
+        <button type="submit">submit</button><br>
+     </form>
+    <!-- 9 -->
+     <input type="email" placeholder="email soal 9"><br>
+    <!-- 10 -->
+     <input type="number" pattern="[0-9]{10,12}" placeholder="nomor telepon soal 10"><br>
+    <!-- 11 -->
+     <input type="text" pattern="[a-z]+" placeholder="username soal 11"><br>
+    <!-- 12 -->
+     <input type="number" pattern="[0-9]{5}" placeholder="kode pos soal 12"><br>
+    <!-- 13 -->
+     <input type="date" max="2019-12-31" placeholder="date soal 13"><br>
+    <!-- 14 -->
+     <input type="url" placeholder="url soal 14"><br>
+    <!-- 15 -->
+     <input type="number" pattern="(0|2|4|6|8)$" placeholder="angka genap soal 15"><br>
+    <!-- 16 -->
+     <form id="soal16">
+        nama : <input type="text" id="nama" placeholder="nama soal 16">
+        <button type="submit">submit</button><br>
+     </form>
+    <!-- 17 -->
+     <input type="number" id="soal17" placeholder="angka soal 17"><br>
+    <!-- 18 -->
+     <input type="password" placeholder="password soal 18" id="soal18"><br>
+    <!-- 19 -->
+     <input type="email" placeholder="email soal 19" id="soal19"><br>
+    <!-- 20 -->
+      <input type="text" id="soal20" placeholder="angka soal 20"><br>
+    <!-- 21 -->
+     <form id="soal">
+         <input type="password" placeholder="password soal 21" id="soal21-1">
+         <input type="password" placeholder="ulang password soal 21" id="soal21-2">
+         <button type="submit">submit</button><br>
+     </form>
+    <!-- 22 -->
+     <input type="date" placeholder="date soal 22" id="soal22"><br>
+    <!-- 23 -->
+     <input type="text" placeholder="text soal 23" id="soal23"><br>
+    <!-- 24 -->
+     <form id="soal24">
+        nama : <input type="text" id="nama24" placeholder="nama soal 24">
+        password : <input type="password" id="password" placeholder="password soal 24">
+        <button type="submit">submit</button><br>
+     </form>
+    <!-- 25 -->
+    kelik sini no 25
+     <input type="checkbox" id="soal25"><br>
+    <!-- 26 -->
+     <input type="number" id="soal26" placeholder="angka soal 26">
+     <button type="submit" id="submit26">submit</button><br>
+    <!-- 27 -->
+     <textarea id="komen" placeholder="tulis komen soal 27 max 200 karakter"></textarea>
+     <p id="info"></p>
+     <button type="submit" id="submit27">submit</button>
+    <!-- 28 -->
+     <form id="pilih">
+        <label for="jurusan">pilih jurusan :</label>
+        <select id="jurusan">
+            <option value="">--pilihan jurusan--</option>
+            <option value="TI">Teknik Informatika</option>
+            <option value="SI">Sistem Informasi</option>
+            <option value="TKJ">Teknik Komputer dan Jaringan</option>
+        </select>
+        <button type="submit">submit</button>
+     </form>
+    <!-- 29 -->
+     <label for="upload">upload file :</label>
+     <input type="file" id="upload">
+     <button type="submit">upload</button>
+    <!-- 30 -->
+     <form id="pendaftaran">
+        <label for="pendaftaran">-- Pendaftaran --</label>
+        <input type="text" id="nama30" placeholder="nama">
+        <input type="email" id="email30" placeholder="email">
+        <input type="password" id="password30" placeholder="password">
+        <input type="submit" id="submit30">
+     </form>
+<script>
+//  8
+document.getElementById('login').addEventListener('submit', function(e){
+    e.preventDefault();
+})
+// 16
+document.getElementById('soal16').addEventListener('submit', function(e){
+    e.preventDefault()
+
+    const nama = document.getElementById('nama').value;
+    if (nama === "") {
+        alert('nama tidak boleh kosong')
+    }
+})
+// 17 
+document.getElementById('soal17').addEventListener('change', function(e){
+    e.preventDefault()
+
+    const angka = document.getElementById('soal17').value;
+    if (angka < 18) {
+        alert('angka harus lebih dari 18')
+    }
+})
+// 18
+const input = document.getElementById('soal18')
+input.addEventListener('change', function(){
+    const password = input.value;
+    if (password.length < 8) {
+        alert('password harus lebih dari 8 karakter')
+    }
+})
+// 19
+const email = document.getElementById('soal19')
+email.addEventListener('change', function(){
+    const em = email.value;
+    if (!/^[\w.-]+@[\w.-]+\.\w{2,}$/.test(em)) {
+        alert('email tidak valid')
+    }
+})
+// 20
+const hp = document.getElementById('soal20')
+hp.addEventListener('input', function(){
+    const h = hp.value;
+    if (isNaN(h)) {
+        alert('input harus angka')
+    }
+})
+// 21
+const soal = document.getElementById('soal')
+const pass1 = document.getElementById('soal21-1')
+const pass2 = document.getElementById('soal21-2')
+soal.addEventListener('submit', function(e){
+    e.preventDefault()
+
+    if (pass1.value !== pass2.value) {
+        alert('password tidak sama')
+    }
+})
+// 22
+const date = document.getElementById('soal22')
+date.addEventListener('submit', function(){
+    const d = new Date(date.value);
+    const now = new Date();
+
+    d.setHours(0, 0, 0, 0);
+    now.setHours(0, 0, 0, 0);
+
+    if (d > now) {
+        alert('tanggal tidak valid')
+    }
+})
+// 23
+const text = document.getElementById('soal23')
+text.addEventListener('input', function(){
+    const t = text.value;
+
+    if (!/^[a-zA-Z0-9]{5,}$/.test(t)) {
+        alert('input harus huruf dan angka')
+    }
+})
+// 24
+const form = document.getElementById('soal24')
+form.addEventListener('submit', function(e){
+    // console.log('submit');
+    e.preventDefault()
+
+    const nama = document.getElementById('nama24').value;
+    const password = document.getElementById('password').value;
+
+    if (!nama || !password) {
+        alert('nama dan password harus diisi')
+    }
+})
+// 25
+const check = document.getElementById('soal25')
+check.addEventListener('change', function(){
+    if (!check.checked) {
+        alert('anda harus menyetujui syarat dan ketentuan')
+    }
+})
+// 26
+const angka = document.getElementById('soal26')
+const submit = document.getElementById('submit26')
+submit.addEventListener('click', function(){
+    const a = parseInt(angka.value);
+    if (isNaN(a)) {
+        alert('input harus angka')
+    } else if (a % 2 !== 0) {
+        alert('angka harus genap')
+    } else {
+        alert('angka genap')
+    }
+})
+// 27
+const komen = document.getElementById('komen')
+const info = document.getElementById('info')
+const submit27 = document.getElementById('submit27')
+komen.addEventListener('input', function(){
+    const k = komen.value;
+    info.innerText = k.length + ' / 200 karakter';
+
+    if (k.length > 200) {
+        info.style.color = 'red';
+    } else {
+        info.style.color = 'black';
+    }
+})
+submit27.addEventListener('click', function(){
+    const k = komen.value;
+    if (k.length > 200) {
+        alert('komen harus kurang dari 200 karakter')
+    } else if (k.length === 0) {
+        alert('komen harus diisi')
+    } else {
+        alert('komen berhasil dikirim')
+    }
+})
+// 28
+const pilih = document.getElementById('pilih')
+pilih.addEventListener('submit', function(e){
+    e.preventDefault()
+
+    const jurusan = document.getElementById('jurusan').value;
+    if (jurusan === "") {
+        alert('jurusan harus dipilih')
+    } else if (jurusan === "TI") {
+        alert('Teknik Informatika')
+    } else if (jurusan === "SI") {
+        alert('Sistem Informasi')
+    } else if (jurusan === "TKJ") {
+        alert('Teknik Komputer dan Jaringan')
+    }  else {
+        alert('jurusan tidak valid')
+    }
+})
+// 29
+const upload = document.getElementById('upload')
+const submit29 = document.getElementById('submit')
+upload.addEventListener('change', function() {
+    const file = upload.files[0].name.toLowerCase();
+
+    if (!(file.endsWith('.png') || file.endsWith('.jpg'))) {
+        alert('file harus png atau jpg')
+    } else {
+        alert('file berhasil diupload')
+    }
+})
+// 30
+const pendaftaran = document.getElementById('pendaftaran')
+const submit30 = document.getElementById('submit30')
+submit30.addEventListener('click', function(e){
+    e.preventDefault()
+
+    const nama = document.getElementById('nama30').value;
+    const email = document.getElementById('email30').value;
+    const password = document.getElementById('password30').value;
+
+    if (!nama || !email || !password) {
+        alert('nama, email, dan password harus diisi')
+    } else if (!/^[\w.-]+@[\w.-]+\.\w{2,}$/.test(email)) {
+        alert('email harus ada @')
+    } else if (/\s/.test(nama)) {
+        alert('nama tidak boleh ada spasi')
+    } else if (password.length < 8 || !/^[a-zA-Z0-9]+$/.test(password)) {
+        alert('password harus lebih dari 8 karakter dan hanya boleh huruf dan angka')
+    } else {
+        alert('pendaftaran berhasil')
+    }
+})
+</script>
+</body>
+</html>

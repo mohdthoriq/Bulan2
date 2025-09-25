@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- soal 6 -->
+    <form id="input">
+        <input type="text" id="inputNama" placeholder="masukkan nama soal 6 dan 7">
+        <button id="btnSimpan" onclick="simpan()">Simpan</button>
+    </form><br>
+    <!-- soal 7 -->
+    <button onclick="tampilkan()">tampilkan data</button>
+    <p id="hasil"></p>
+    <!-- soal 8 -->
+    <form id="login">
+        <input type="text" id="username" placeholder="masukkan username">
+        <input type="password" id="password" placeholder="masukkan password">
+        <button onclick="login()">login</button>
+    </form>
+    <!-- soal 9 -->
+    <button onclick="logout()">logout</button><br><br>
+    <!-- soal 10 -->
+    <button onclick="tambah()">tambah</button>
+    <button onclick="reset()">reset</button>
+    <p id="+">hasil : <span>0</span></p>
+    <!-- soal 11 -->
+    <form id="formTema">
+        <select id="tema">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+        <button type="submit">Simpan</button>
+    </form><br>
+    <!-- soal 12 -->
+    <!-- soal 13 & 14 -->
+     <form id="keperluan">
+        <input type="text" placeholder="belanja" id="belanja">
+        <button onclick="simpanbelanja()">belanja</button>
+     </form>
+     <button onclick="tampilkanbelanja()">tampilkan belanja</button>
+     <p id="tampilan"></p>
+    <!-- soal 15 -->
+     <button id="clear-all" onclick="localStorage.clear()">clear</button>
+    <!-- soal 16 -->
+     <form id="data">
+        <input type="text" placeholder="nama" id="nama">
+        <input type="number" placeholder="umur" id="umur">
+        <input type="text" placeholder="email" id="email">
+        <button onclick="simpanData()">simpan</button>
+     </form>
+    <!-- soal 17 -->
+     <p id="tampilandata"></p>
+    <!-- soal 18 -->
+     <form id="pendaftaran">
+        <input type="text" placeholder="username" id="soal18">
+        <button type="submit">daftar</button>
+     </form>
+    <!-- soal 19 -->
+     <form id="ganti">
+        <input type="text" placeholder="masukkan nama lama" id="namaLama">
+        <input type="text" placeholder="masukkan nama baru" id="namaBaru">
+        <button>ganti</button>
+     </form>
+     <pre id="tampilganti"></pre>
+    <!-- soal 20 -->
+     <form id="regis">
+        <input type="text" placeholder="username" id="register">
+        remember me : <input type="checkbox" id="check">
+     </form>
+
+
+    <script>
+        // 6.
+        function simpan() {
+            let nama = document.getElementById('inputNama').value;
+            localStorage.setItem('nama', nama);
+            alert('Data disimpan');
+        }
+        // 7.
+        function tampilkan() {
+            let nama = sessionStorage.getItem('nama');
+            if (nama) {
+                document.getElementById('hasil').innerText = 'Selamat datang, ' + nama;
+            } else {
+                alert('Data tidak ditemukan');
+            }
+        }
+        // 8.
+        function login() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+
+            alert('login berhasil');
+        }
+        // 9.
+        function logout() {
+            localStorage.removeItem('username');
+            localStorage.removeItem('password');
+
+            alert('logout berhasil');
+        }
+        // 10.
+        function tambah() {
+            let tambah = parseInt(localStorage.getItem('tambah') || '0');
+            tambah++;
+            localStorage.setItem('tambah', tambah)
+            document.getElementById('+').innerText = `hasil : ${tambah}`;
+        }
+        function reset() {
+            localStorage.removeItem('tambah');
+            document.getElementById('+').innerText = `hasil : 0`;
+        }
+        // 11. &  12.
+        const form = document.getElementById("formTema");
+        const themeSelect = document.getElementById("tema");
+
+        function app(theme) {
+            if (theme === "dark") {
+                document.body.style.backgroundColor = "#222"
+                document.body.style.color = "white"
+            } else {
+                document.body.style.backgroundColor = "#fff"
+                document.body.style.color = "black"
+            }
+        }
+
+        // saat load
+        let savedTheme = localStorage.getItem("tema") || "light";
+        themeSelect.value = savedTheme;
+        app(savedTheme);
+
+
+        // saat submit
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const selected = themeSelect.value;
+            localStorage.setItem("tema", selected);
+            app(selected);
+        }
+        );
+        // soal 13
+        let belArr = JSON.parse(localStorage.getItem('belanja')) || [];
+        function simpanbelanja() {
+            let item = document.getElementById('belanja').value;
+            console.log(item);
+            
+            belArr.push(item);
+            localStorage.setItem('belanja', JSON.stringify(belArr));
+            alert('belanja berhasil disimpan');
+        }
+        // soal 14
+        function tampilkanbelanja() {
+            let belanja = JSON.parse(localStorage.getItem('belanja'));
+            if (belanja && belanja.length > 0) {
+                document.getElementById('tampilan').innerText = 'belanja : ' + belanja.join(', ');
+            } else {
+                alert('belanja tidak ditemukan');
+            }
+        }
+        // soal 16
+        function simpanData() {
+            let nama = document.getElementById('nama').value;
+            let umur = document.getElementById('umur').value;
+            let email = document.getElementById('email').value;
+
+            let data = [
+                nama,
+                umur,
+                email
+
+            ]
+            if (email === '' || nama === ''|| umur === 0) {
+                alert('data tidak boleh kosong');
+                return;
+            } else if (isNaN(umur)) {
+                alert('umur harus angka');
+                return;
+            } else if (!email.includes('@')) {
+                alert('email tidak valid');
+                return;
+            } else {
+                let dataArr = JSON.parse(localStorage.getItem('data')) || [];
+                dataArr.push(data);
+                localStorage.setItem('data', JSON.stringify(dataArr));
+                alert('data berhasil disimpan')
+            }
+        }
+        // soal 17
+        window.onload = () => {
+            let data = JSON.parse(localStorage.getItem('data'));
+            if (data && data.length > 0) {
+                let tampilkan = data.map((e) => {
+                    return `
+                    <div>
+                        <p>nama : ${e[0]}</p>
+                        <p>umur : ${e[1]}</p>
+                        <p>email : ${e[2]}</p>
+                    </div>
+                    `
+                }).join('')
+                document.getElementById('tampilandata').innerHTML = tampilkan;
+            } else {
+                alert('data tidak ditemukan');
+            }
+        }
+        // soal 18
+        const daftar = document.getElementById('pendaftaran');
+        daftar.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let username = document.getElementById('soal18').value;
+            localStorage.setItem('username', username);
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+
+            if (users.includes(username)) {
+                alert(`user ${username} sudah terdaftar`);
+            } else {
+                users.push(username);
+                localStorage.setItem(`users`, JSON.stringify(users))
+                alert(`user ${username} berhasil daftar`);
+            }
+        })
+        // 19
+        const ganti = document.getElementById('ganti');
+        ganti.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let username = document.getElementById('soal18').value;
+            if (!username) {
+                alert('username tidak boleh kosong');
+                return;
+            }
+            let namaLama = document.getElementById('namaLama').value;
+            let namaBaru = document.getElementById('namaBaru').value;
+            
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            if (users.includes(namaLama)) {
+                let index = users.indexOf(username);
+                users[index] = namaBaru;
+                alert(`user ${namaLama} berhasil diganti menjadi ${namaBaru}`);
+                localStorage.setItem('users', JSON.stringify(users));
+            } else {
+                alert(`user ${username} tidak ditemukan`)
+            }
+
+        })
+        // 20
+        const regis = document.getElementById('regis');
+        regis.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let username = document.getElementById('register').value;
+            let check = document.getElementById('check').checked;
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            if (!check) {
+                alert('semua persyaratan harus dipenuhi');
+                return;
+            }
+            if (users.includes(username)) {
+                alert(`user ${username} sudah terdaftar`);
+            } else {
+                users.push(username);
+                localStorage.setItem('users', JSON.stringify(users));
+                alert(`user ${username} berhasil daftar`);
+            }
+            }
+        )
+    </script>
+</body>
+
+</html>

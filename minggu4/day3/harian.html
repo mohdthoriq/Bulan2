@@ -1,0 +1,137 @@
+<!-- contoh.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Contoh Role dengan sessionStorage</title>
+</head>
+<body>
+  <input id="nama" placeholder="Masukkan nama" />
+  <button id="simpan">Simpan Nama</button>
+  <button id="hapusNama">Hapus Nama</button>
+
+  <hr>
+
+  <button id="loginAdmin">Login sebagai Admin</button>
+  <button id="logout" style="display:none">Logout</button>
+
+  <br><br>
+
+  <div id="hasil"></div>
+
+    <br><br>
+
+  <form id="simpan">
+    <label for="nama">color picker :</label>
+    <select name="color" id="color">
+        <option value="">-- pilih warna --</option>
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="yellow">yellow</option>
+        <option value="orange">orange</option>
+        <option value="purple">purple</option>
+    </select>
+    <button onclick="reset(e)">reset</button>
+  </form>
+
+
+  <script>
+    // Simpan nama ke localStorage
+    function simpan() {
+      const nama = document.getElementById('nama').value;
+      localStorage.setItem('nama', nama);
+      updateUI(); // refresh tampilan setelah berubah
+    }
+
+    function hapus() {
+      localStorage.removeItem('nama');
+      updateUI();
+    }
+
+    // Login as admin (simpan role di sessionStorage)
+    function loginAsAdmin() {
+      sessionStorage.setItem('role', 'admin'); // persist sementara per tab
+      const role = sessionStorage.getItem('role'); // baca lagi dari storage
+      alert('lagi di admin');
+      console.log(`role: ${role}`); // sekarang aman karena role didefinisikan
+      updateUI();
+    }
+
+    // Logout: hapus role dari sessionStorage -> kembali jadi guest
+    function logout() {
+      sessionStorage.removeItem('role');
+      const role = sessionStorage.getItem('role') || 'guest';
+      alert('kamu lagi guest');
+      console.log(`role: ${role}`);
+      updateUI();
+    }
+
+    // Fungsi sentral untuk update tampilan (DOM) berdasarkan state
+    function updateUI() {
+      const role = sessionStorage.getItem('role') || 'guest'; // selalu dapat value
+      const nama = localStorage.getItem('nama');
+
+      // elemen DOM
+      const simpanBtn = document.getElementById('simpan');
+      const hapusBtn = document.getElementById('hapusNama');
+      const loginBtn = document.getElementById('loginAdmin');
+      const logoutBtn = document.getElementById('logout');
+      const hasil = document.getElementById('hasil');
+
+      // contoh logic: hanya sembunyikan tombol simpan jika role === 'admin'
+      // (sebelumnya kamu pakai if(role) yang salah karena 'guest' juga truthy)
+      if (role === 'admin') {
+        simpanBtn.style.display = 'none';
+        hapusBtn.style.display = 'none';
+        loginBtn.style.display = 'none';
+        logoutBtn.style.display = 'inline-block';
+      } else {
+        simpanBtn.style.display = 'inline-block';
+        hapusBtn.style.display = 'inline-block';
+        loginBtn.style.display = 'inline-block';
+        logoutBtn.style.display = 'none';
+      }
+
+      // tampilkan pesan berdasarkan nama / role
+      if (nama) {
+        hasil.innerText = 'Selamat datang, ' + nama + ' (' + role + ')';
+      } else {
+        hasil.innerText = 'Halo ' + role;
+      }
+    }
+
+    // Pasang event listener (lebih clean daripada inline onclick)
+    document.getElementById('simpan').addEventListener('click', simpan);
+    document.getElementById('hapusNama').addEventListener('click', hapus);
+    document.getElementById('loginAdmin').addEventListener('click', loginAsAdmin);
+    document.getElementById('logout').addEventListener('click', logout);
+
+    // Saat halaman dibuka, update UI sesuai state sessionStorage/localStorage
+    window.addEventListener('load', updateUI);
+
+
+    const warna = document.getElementById('color');
+
+    window.onload = () => {
+        let saved = localStorage.setItem('bg-color')
+        if (saved) {
+            document.body.style.backgroundColor = saved;
+            warna.value = saved;
+        }
+    }
+
+    warna.addEventListener('change', () => {
+        document.body.style.backgroundColor = warna.value;
+        localStorage.setItem('bg-color', warna.value);
+    })
+
+    function reset(e) {
+        e.preventDefault(); // masih masalah // hlama masih reload
+        localStorage.removeItem('bg-color');
+        document.body.style.backgroundColor = 'white';
+        warna.value = 'white';
+    }
+  </script>
+</body>
+</html>
